@@ -10,6 +10,9 @@ findfourth <-- find the range of non-outliers from the fourth quartile (see whis
 Nicholas Zehm
 5/24/2023
 '''
+
+# Round to the nearest 5 without calling R functions (does use built in operators)
+# Use on vector of length 1 or more
 pentroundOld <- function(x) {
   if (x %% 5 == 0) {
     return (x)
@@ -27,10 +30,14 @@ pentroundOld <- function(x) {
   }
 }
 
+# Simple concise implimentation of round to nearest 5
+# Use on vector of length 1 or more
 pentround <- function(x) {
   return (round(x/5)*5)
 }
 
+# Get the standard deviation of a sample (vs population)
+# Use on a vector, probably more than 1 or 2 in length...
 sample_dev <- function(x) {
   m <- mean(x)
   Sxx <- sum((x - m)^2)
@@ -40,6 +47,8 @@ sample_dev <- function(x) {
   return(d)
 }
 
+# find the range of non-outliers using median and fourth quartile
+# Use on a vector, probably more than 1 or 2 in length...
 findfourth <- function(x) {
   m = median(x)
   q1 = median(x[x <= m])
